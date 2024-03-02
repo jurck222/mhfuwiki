@@ -1,0 +1,7 @@
+<div class="container">
+  @for (row of starsArray; track row) {
+    <div class="bg-danger w-50 ms-auto me-auto mb-1">
+      <app-stars-row [row]="row" />
+    </div>
+  }
+</div>

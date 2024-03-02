@@ -1,0 +1,17 @@
+@for (star of row(); track star) {
+  <i class="{{ star }} text-warning p-1 mb-2"></i>
+}
+<button
+  class="unstyled-button float-end"
+  (click)="toggleList.set(!toggleList())">
+  @if (!toggleList()) {
+    <i class="fa-solid fa-caret-down text-warning pe-1"></i>
+  } @else {
+    <i class="fa-solid fa-caret-up text-warning pe-1"></i>
+  }
+</button>
+@if (toggleList()) {
+  <app-quest-list
+    [rank]="rank"
+    [stars]="1" />
+}
