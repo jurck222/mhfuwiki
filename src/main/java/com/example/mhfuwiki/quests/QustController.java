@@ -1,6 +1,5 @@
 package com.example.mhfuwiki.quests;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +35,11 @@ public class QustController {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+    @GetMapping("/getQuestsForRankAndStar/")
+    public List<Quest> getQuestsForRankAndStar(@RequestParam String rank,
+                                          @RequestParam int star){
+     return questService.getQuestsForRankAndStar(rank,star);
     }
 
     @DeleteMapping("/{id}")

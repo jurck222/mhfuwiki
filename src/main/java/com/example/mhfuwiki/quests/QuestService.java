@@ -3,6 +3,7 @@ package com.example.mhfuwiki.quests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
@@ -90,5 +91,9 @@ public class QuestService {
             throw new IllegalStateException("Quest with id "+id+" does not exist");
         }
         return optional.get();
+    }
+
+    public List<Quest> getQuestsForRankAndStar(String rank, int star){
+        return questRepository.findByRankAndStar(rank,star);
     }
 }
