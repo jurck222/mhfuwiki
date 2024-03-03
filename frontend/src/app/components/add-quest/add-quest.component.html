@@ -1,0 +1,146 @@
+<div class="container">
+  <form
+    [formGroup]="questFormGroup"
+    (ngSubmit)="onSubmit()">
+    <label for="title">Quest title:</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      formControlName="title" />
+    <label for="rank">Quest rank:</label>
+    <select
+      name="rank"
+      id="rank"
+      formControlName="rank">
+      <option
+        value=""
+        disabled
+        selected>
+        Select rank
+      </option>
+      @for (rank of questRanks; track rank) {
+        <option>{{ rank }}</option>
+      }
+    </select>
+    <label for="star">Stars:</label>
+    <input
+      formControlName="star"
+      type="number"
+      name="stars"
+      id="stars" />
+    <label for="obj">Objective:</label>
+    <input
+      type="text"
+      name="obj"
+      id="obj" />
+    <label for="questGiverLocation">Quest giver location:</label>
+    <select
+      formControlName="questGiverLocation"
+      name="questGiverLocation"
+      id="questGiverLocation">
+      <option
+        value=""
+        disabled
+        selected>
+        Select a quest giver location
+      </option>
+      @for (questGiverLocation of questGiverLocations; track questGiverLocation) {
+        <option>{{ questGiverLocation }}</option>
+      }
+    </select>
+    <label for="mapLocation">Map location:</label>
+    <select
+      formControlName="mapLocation"
+      name="mapLocation"
+      id="mapLocation">
+      <option
+        value=""
+        disabled
+        selected>
+        Select a location
+      </option>
+      @for (location of mapLocations; track location) {
+        <option>{{ location }}</option>
+      }
+    </select>
+    <label for="desc">Description:</label>
+    <input
+      formControlName="description"
+      type="text"
+      name="desc"
+      id="desc" />
+    <label for="reward">Reward:</label>
+    <input
+      formControlName="reward"
+      type="number"
+      name="reward"
+      id="reward" />
+    <label for="fee">Fee:</label>
+    <input
+      formControlName="fee"
+      type="number"
+      name="fee"
+      id="fee" />
+    <label for="time">Time limit:</label>
+    <input
+      formControlName="time"
+      type="number"
+      name="time"
+      id="time" />
+    <label for="req">Requirements:</label>
+    <input
+      formControlName="requirements"
+      type="text"
+      name="req"
+      id="req" />
+    <label for="otherMonsters">Other monsters:</label>
+    <input
+      formControlName="otherMonsters"
+      type="text"
+      name="otherMonsters"
+      id="otherMonsters" />
+    <label for="timeOfDay">Time of day:</label>
+    <select
+      formControlName="timeOfDay"
+      name="timeOfDay"
+      id="timeOfDay">
+      <option
+        value=""
+        disabled
+        selected>
+        Select time of day
+      </option>
+      @for (timeOfDay of dayTimes; track timeOfDay) {
+        <option>{{ timeOfDay }}</option>
+      }
+    </select>
+    <div class="form-check form-switch">
+      <input
+        formControlName="keyQuest"
+        class="form-check-input"
+        type="checkbox"
+        id="keyQuest" />
+      <label
+        class="form-check-label"
+        for="keyQuest">
+        Key quest?
+      </label>
+    </div>
+    <div class="form-check form-switch">
+      <input
+        formControlName="urgentQuest"
+        class="form-check-input"
+        type="checkbox"
+        id="urgentQuest" />
+      <label
+        class="form-check-label"
+        for="urgentQuest">
+        Urgent quest?
+      </label>
+    </div>
+    <input
+      type="submit"
+      value="Submit" />
+  </form>
+</div>

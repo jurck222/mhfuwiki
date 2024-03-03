@@ -18,6 +18,6 @@ export class QuestListComponent {
   quests = computedAsync(() => (this.rank() && this.stars() ? this.#getQuests$(this.rank(), this.stars()) : null));
 
   #getQuests$(rank: string, stars: number) {
-    return this.#questService.getQuestsByRankAndStar();
+    return this.#questService.getQuestsByRankAndStar(rank, stars);
   }
 }

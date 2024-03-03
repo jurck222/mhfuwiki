@@ -10,6 +10,7 @@ import { QuestListComponent } from '../quest-list/quest-list.component';
 })
 export class StarsRowComponent {
   row = input.required<string[]>();
+  stars = input.required<number>();
   toggleList = signal(false);
   rank = 'LR';
 }

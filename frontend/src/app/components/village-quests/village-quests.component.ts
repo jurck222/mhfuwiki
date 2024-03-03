@@ -1,4 +1,4 @@
-import { Component, OnInit, input } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { StarsRowComponent } from '../shared/stars-row/stars-row.component';
 
 @Component({
@@ -9,8 +9,9 @@ import { StarsRowComponent } from '../shared/stars-row/stars-row.component';
   imports: [StarsRowComponent],
 })
 export class VillageQuestsComponent implements OnInit {
-  numberOfStars = input.required<number>();
+  numberOfStars = signal(6);
   starsArray: string[][] = [];
+  stars = 0;
 
   ngOnInit(): void {
     this.generateStars(this.numberOfStars());

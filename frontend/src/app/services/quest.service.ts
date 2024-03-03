@@ -11,7 +11,11 @@ export class QuestService {
 
   constructor(private http: HttpClient) {}
 
-  getQuestsByRankAndStar(): Observable<QuestModel[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/getQuestsForRankAndStar/?rank=LR&star=3`);
+  getQuestsByRankAndStar(rank: string, stars: number): Observable<QuestModel[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/getQuestsForRankAndStar/?rank=${rank}&star=${stars}`);
+  }
+
+  addQuest(quest: QuestModel) {
+    return this.http.post(`${this.apiUrl}/`, quest);
   }
 }
