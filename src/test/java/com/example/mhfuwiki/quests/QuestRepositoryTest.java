@@ -64,9 +64,6 @@ public class QuestRepositoryTest {
 
         List<Quest> foundQuests = questRepository.findByRankAndStar("LR", 1);
 
-        for (Quest quest:foundQuests){
-            System.out.println(quest);
-        }
         assertEquals(1, foundQuests.size());
         assertEquals("test title", foundQuests.get(0).getTitle());
     }
