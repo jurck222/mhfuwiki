@@ -84,4 +84,8 @@ public class QuestRepositoryTest {
         assertEquals("test title", foundQuests.get(0).getTitle());
         assertEquals("test title2", foundQuests.get(1).getTitle());
     }
+
+    @Test
+    void contextLoads() {
+    }
 }
