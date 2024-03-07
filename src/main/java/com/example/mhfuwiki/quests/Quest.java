@@ -2,6 +2,8 @@ package com.example.mhfuwiki.quests;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.Objects;
+
 @Getter
 @Entity
 @Table
@@ -52,6 +54,25 @@ public class Quest {
         this.keyQuest = keyQuest;
         this.urgentQuest = urgentQuest;
         this.star = star;
+    }
+
+    public Quest(Long id, int star, String title, String rank, String questGiverLocation, String mapLocation, String description, String objective, int reward, int fee, int time, String requirements, String otherMonsters, String timeOfDay, boolean keyQuest, boolean urgentQuest) {
+        this.id = id;
+        this.title = title;
+        this.rank = rank;
+        this.questGiverLocation = questGiverLocation;
+        this.mapLocation = mapLocation;
+        this.description = description;
+        this.objective = objective;
+        this.reward = reward;
+        this.fee = fee;
+        this.time = time;
+        this.star = star;
+        this.requirements = requirements;
+        this.otherMonsters = otherMonsters;
+        this.timeOfDay = timeOfDay;
+        this.keyQuest = keyQuest;
+        this.urgentQuest = urgentQuest;
     }
 
     public void setId(Long id) {
@@ -138,5 +159,18 @@ public class Quest {
                 ", keyQuest=" + keyQuest +
                 ", urgentQuest=" + urgentQuest +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Quest quest = (Quest) o;
+        return reward == quest.reward && fee == quest.fee && time == quest.time && star == quest.star && keyQuest == quest.keyQuest && urgentQuest == quest.urgentQuest && Objects.equals(id, quest.id) && Objects.equals(title, quest.title) && Objects.equals(rank, quest.rank) && Objects.equals(questGiverLocation, quest.questGiverLocation) && Objects.equals(mapLocation, quest.mapLocation) && Objects.equals(description, quest.description) && Objects.equals(objective, quest.objective) && Objects.equals(requirements, quest.requirements) && Objects.equals(otherMonsters, quest.otherMonsters) && Objects.equals(timeOfDay, quest.timeOfDay);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, rank, questGiverLocation, mapLocation, description, objective, reward, fee, time, star, requirements, otherMonsters, timeOfDay, keyQuest, urgentQuest);
     }
 }

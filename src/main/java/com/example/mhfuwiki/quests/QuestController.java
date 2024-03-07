@@ -8,10 +8,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/v1/quests")
 @CrossOrigin(origins = "http://localhost:4200")
-public class QustController {
+public class QuestController {
     private final QuestService questService;
 
-    public QustController(QuestService questService) {
+    public QuestController(QuestService questService) {
         this.questService = questService;
     }
 
