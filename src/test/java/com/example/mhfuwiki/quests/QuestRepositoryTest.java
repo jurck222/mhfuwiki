@@ -62,9 +62,9 @@ public class QuestRepositoryTest {
         Quest savedQuest = questRepository.save(testQuest);
         Quest savedQuest2 = questRepository.save(testQuest2);
 
-        List<Quest> foundQuests = questRepository.findByRankAndStar("LR", 1);
+        List<Quest> foundQuests = questRepository.findByRankAndStar("HR", 1);
 
-        //assertEquals(1, foundQuests.size());
+        assertEquals(1, foundQuests.size());
         assertEquals("test title", foundQuests.get(0).getTitle());
     }
 
