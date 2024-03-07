@@ -12,15 +12,19 @@ jobs:
   build:
  
     runs-on: ubuntu-latest
- 
-    steps:
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '11'
-        postgresql db: mhfu-wiki
-        postgresql user: mhfu-wiki
-        postgresql password: mhfu-wiki
 
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: mhfu-wiki
+          POSTGRES_PASSWORD: mhfu-wiki
+          POSTGRES_DB: mhfu-wiki
+        ports:
+          - 5434:5432  # Map local port 5343 to PostgreSQL default port 5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 21
       uses: actions/setup-java@v3
