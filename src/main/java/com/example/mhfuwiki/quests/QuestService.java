@@ -71,9 +71,9 @@ public class QuestService {
         return questRepository.findAll();
     }
 
-    public ResponseEntity<String> deleteTodo(long id) {
+    public ResponseEntity<String> deleteQuest(long id) {
         try {
-            questRepository.findById(id).orElseThrow(() -> new IllegalStateException("Todo with id "+id+" does not exist"));
+            questRepository.findById(id).orElseThrow(() -> new IllegalStateException("Quest with id "+id+" does not exist"));
             questRepository.deleteById(id);
             return ResponseEntity.ok().body("{\"message\":\"Quest with id "+id+" successfully deleted\"}");
         }catch(Exception e){
