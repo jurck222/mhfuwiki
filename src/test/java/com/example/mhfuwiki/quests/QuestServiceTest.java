@@ -89,7 +89,7 @@ public class QuestServiceTest {
         Quest testQuest = new Quest(1L,1,"test title","LR","Village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
 
         when(questRepository.findById(id)).thenReturn(Optional.of(testQuest));
-        questService.deleteTodo(id);
+        questService.deleteQuest(id);
 
         verify(questRepository).deleteById(id);
     }

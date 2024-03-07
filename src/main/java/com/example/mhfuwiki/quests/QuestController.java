@@ -44,7 +44,7 @@ public class QuestController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteQuest(@PathVariable long id){
-        return questService.deleteTodo(id);
+        return questService.deleteQuest(id);
     }
 
 
