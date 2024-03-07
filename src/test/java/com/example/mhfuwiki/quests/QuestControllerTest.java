@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -24,6 +25,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import static org.awaitility.Awaitility.given;
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -73,6 +75,41 @@ public class QuestControllerTest {
     {
         mockMvc.perform( MockMvcRequestBuilders.delete("/api/v1/quests/{id}", 1) )
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void findQuestTest() throws Exception
+    {
+        Quest testQuest = new Quest(1L,1,"test title","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+
+        when(questService.findQuest(1L)).thenReturn(testQuest);
+        mockMvc.perform( MockMvcRequestBuilders.get("/api/v1/quests/{id}", 1L)
+                .content(asJsonString(testQuest))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.title").value("test title"));
+    }
+
+    @Test
+    public void findQuestByRankAndStar() throws Exception
+    {
+        Quest testQuest = new Quest(1L,1,"test title","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+        Quest testQuest2 = new Quest(2L,1,"test title","HR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+
+        List<Quest> quests = List.of(testQuest2);
+        when(questService.getQuestsForRankAndStar("HR", 1)).thenReturn(quests);
+        mockMvc.perform( MockMvcRequestBuilders.get("/api/v1/quests/getQuestsForRankAndStar/")
+                        .param("rank", "HR")
+                        .param("star", "1")
+                        .content(asJsonString(quests))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].id").value(2))
+                .andExpect(jsonPath("$[0].title").value("test title"));
     }
 
     public static String asJsonString(final Object obj) {
