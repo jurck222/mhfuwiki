@@ -1,4 +1,5 @@
 package com.example.mhfuwiki.quests;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -38,7 +39,9 @@ public class Quest {
     public Quest() {
     }
 
-    public Quest(int star, String title, String rank, String questGiverLocation, String mapLocation, String description, String objective, int reward, int fee, int time, String requirements, String otherMonsters, String timeOfDay, boolean keyQuest, boolean urgentQuest) {
+    public Quest(int star, String title, String rank, String questGiverLocation, String mapLocation, String description,
+                 String objective, int reward, int fee, int time, String requirements, String otherMonsters,
+                 String timeOfDay, boolean keyQuest, boolean urgentQuest) {
         this.title = title;
         this.rank = rank;
         this.questGiverLocation = questGiverLocation;
@@ -56,7 +59,9 @@ public class Quest {
         this.star = star;
     }
 
-    public Quest(Long id, int star, String title, String rank, String questGiverLocation, String mapLocation, String description, String objective, int reward, int fee, int time, String requirements, String otherMonsters, String timeOfDay, boolean keyQuest, boolean urgentQuest) {
+    public Quest(Long id, int star, String title, String rank, String questGiverLocation, String mapLocation,
+                 String description, String objective, int reward, int fee, int time, String requirements,
+                 String otherMonsters, String timeOfDay, boolean keyQuest, boolean urgentQuest) {
         this.id = id;
         this.title = title;
         this.rank = rank;

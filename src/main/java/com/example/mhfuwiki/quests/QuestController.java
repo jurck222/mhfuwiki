@@ -17,36 +17,35 @@ public class QuestController {
 
     @PostMapping("/")
     @ResponseBody()
-    public ResponseEntity<String> addQuest(@RequestBody Quest quest){
+    public ResponseEntity<String> addQuest(@RequestBody Quest quest) {
         return questService.addQuest(quest);
     }
 
     @GetMapping("/")
-    public List<Quest> getQuests(){
+    public List<Quest> getQuests() {
         return questService.getQuests();
     }
 
     @GetMapping("/{id}")
-    public Quest findQuest(@PathVariable long id){
+    public Quest findQuest(@PathVariable long id) {
         try {
             return questService.findQuest(id);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }
     }
+
     @GetMapping("/getQuestsForRankAndStar/")
     public List<Quest> getQuestsForRankAndStar(@RequestParam String rank,
-                                          @RequestParam int star){
-     return questService.getQuestsForRankAndStar(rank,star);
+                                               @RequestParam int star) {
+        return questService.getQuestsForRankAndStar(rank, star);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteQuest(@PathVariable long id){
+    public ResponseEntity<String> deleteQuest(@PathVariable long id) {
         return questService.deleteQuest(id);
     }
-
 
 
 }
