@@ -15,6 +15,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      DATASOURCE_URL_MHFU: ${{ secrets.DATASOURCE_URL_MHFU }}
+      MHFU_DB_PASS: ${{ secrets.MHFU_DB_PASS }}
+      MHFU_DB_USERNAME: ${{ secrets.MHFU_DB_USERNAME }}
+
     services:
       postgres:
         image: postgres:16
