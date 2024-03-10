@@ -1,5 +1,20 @@
-<div class="container d-block">
+<div
+  class="container d-block pt-2"
+  style="background-color: brown">
   @for (quest of quests(); track quest) {
-    <p>{{ quest.title }}</p>
+    <div class="row p-0">
+      <div class="col">
+        <p>{{ quest.title }}</p>
+      </div>
+      <div class="col text-end">
+        @if (quest.keyQuest) {
+          <p>Key Quest</p>
+        } @else if (quest.urgentQuest) {
+          <p>Urgent Quest</p>
+        } @else {
+          <p>Optional Quest</p>
+        }
+      </div>
+    </div>
   }
 </div>

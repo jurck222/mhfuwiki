@@ -5,7 +5,13 @@ import { StarsRowComponent } from '../shared/stars-row/stars-row.component';
   selector: 'app-village-quests',
   standalone: true,
   templateUrl: './village-quests.component.html',
-  styles: ``,
+  styles: `
+    .intro {
+      background-color: rgba(103, 165, 103);
+      color: #333;
+      font-weight: bold;
+    }
+  `,
   imports: [StarsRowComponent],
 })
 export class VillageQuestsComponent implements OnInit {

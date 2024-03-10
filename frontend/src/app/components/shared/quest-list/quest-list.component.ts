@@ -7,7 +7,19 @@ import { QuestService } from '../../../services/quest.service';
   standalone: true,
   imports: [],
   templateUrl: './quest-list.component.html',
-  styles: ``,
+  styles: `
+    .row {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    .col {
+      padding: 0;
+      margin: 0;
+    }
+    p {
+      border-bottom: solid wheat 1px;
+    }
+  `,
 })
 export class QuestListComponent {
   rank = input.required<string>();
