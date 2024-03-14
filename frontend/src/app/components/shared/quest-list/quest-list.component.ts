@@ -1,11 +1,12 @@
 import { Component, inject, input } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { computedAsync } from 'ngxtension/computed-async';
 import { QuestService } from '../../../services/quest.service';
 
 @Component({
   selector: 'app-quest-list',
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './quest-list.component.html',
   styles: `
     .row {

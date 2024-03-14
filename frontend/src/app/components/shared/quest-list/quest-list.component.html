@@ -2,19 +2,25 @@
   class="container d-block pt-2"
   style="background-color: brown">
   @for (quest of quests(); track quest) {
-    <div class="row p-0">
-      <div class="col">
-        <p>{{ quest.title }}</p>
+    <a
+      class="text-decoration-none text-light"
+      [routerLink]="['/quest', quest.id]"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page">
+      <div class="row p-0">
+        <div class="col">
+          <p>{{ quest.title }}</p>
+        </div>
+        <div class="col text-end">
+          @if (quest.keyQuest) {
+            <p class="text-primary">Key Quest</p>
+          } @else if (quest.urgentQuest) {
+            <p class="text-danger">Urgent Quest</p>
+          } @else {
+            <p class="text-success">Optional Quest</p>
+          }
+        </div>
       </div>
-      <div class="col text-end">
-        @if (quest.keyQuest) {
-          <p>Key Quest</p>
-        } @else if (quest.urgentQuest) {
-          <p>Urgent Quest</p>
-        } @else {
-          <p>Optional Quest</p>
-        }
-      </div>
-    </div>
+    </a>
   }
 </div>
