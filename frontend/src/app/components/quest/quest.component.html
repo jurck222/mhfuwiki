@@ -1,1 +1,67 @@
-<p>quest works!</p>
+<div class="row ms-auto me-auto mt-3">
+  <span
+    class="w-75 ms-auto me-auto text-light border text-center"
+    [ngClass]="{
+      'bg-primary': questInfo()?.keyQuest,
+      'bg-danger': questInfo()?.urgentQuest,
+      'bg-success': !questInfo()?.keyQuest && !questInfo()?.urgentQuest
+    }">
+    {{ questInfo()?.title }}
+  </span>
+</div>
+<div class="row ms-auto me-auto mt-3">
+  <div
+    class="container ms-auto me-auto w-75 text-dark border"
+    style="background-color: rgb(197, 174, 130)">
+    <div class="row">
+      <span>
+        <strong>Objective:</strong>
+        {{ questInfo()?.objective }}
+      </span>
+    </div>
+    <div class="row">
+      <span>
+        <strong>Description:</strong>
+      </span>
+    </div>
+    <div class="row">
+      <span>{{ questInfo()?.description }}</span>
+    </div>
+    <div class="row">
+      <span>
+        <strong>Reward:</strong>
+        {{ questInfo()?.reward }}z
+      </span>
+    </div>
+    <div class="row">
+      <span>
+        <strong>Fee:</strong>
+        {{ questInfo()?.fee }}z
+      </span>
+    </div>
+    <div class="row">
+      <span>
+        <strong>Location:</strong>
+        {{ questInfo()?.mapLocation }} ({{ questInfo()?.timeOfDay }})
+      </span>
+    </div>
+    <div class="row">
+      <span>
+        <strong>Time limit:</strong>
+        {{ questInfo()?.time }}min
+      </span>
+    </div>
+    <div class="row">
+      <span>
+        <strong>Monsters:</strong>
+        {{ questInfo()?.otherMonsters }}
+      </span>
+    </div>
+    <div class="row">
+      <span>
+        <strong>Requirements:</strong>
+        {{ questInfo()?.requirements }}
+      </span>
+    </div>
+  </div>
+</div>
