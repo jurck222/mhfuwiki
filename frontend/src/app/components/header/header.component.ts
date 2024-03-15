@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgbModule],
+  imports: [NgbModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styles: `
     div {

@@ -8,3 +8,10 @@
 	cursor: pointer;
 	outline: inherit;
 }
+
+
+body{
+	background-color:rgb(200, 221, 200);
+	color: wheat;
+}
+

@@ -76,6 +76,14 @@ export class AddQuestComponent {
     this.#questService
       .addQuest(this.quest)
       .pipe(takeUntilDestroyed(this.#destroyRef))
-      .subscribe(message => console.log(message));
+      .subscribe({
+        next: quest => this.cleanup(),
+        error: e => console.error(e),
+      });
+  }
+
+  cleanup() {
+    console.log(this.questFormGroup.value);
+    this.questFormGroup.reset();
   }
 }

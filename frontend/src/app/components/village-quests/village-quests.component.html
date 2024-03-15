@@ -1,6 +1,26 @@
 <div class="container">
+  <div class="row w-75 ms-auto me-auto mb-1 pt-1">
+    <h1 style="color: #333">Village Quests</h1>
+  </div>
+  <div class="row w-75 intro ms-auto me-auto mt-3 mb-3 text-start p-2">
+    <div class="p-2 col w-25 h-25">
+      <img
+        class="w-75 h-75 ms-auto"
+        src="../../../assets/images/PokkeChief.webp"
+        alt="PokkeChief" />
+    </div>
+    <div class="col mt-2">
+      <p>
+        Welcome to the Wiki hub for Monster Hunter Freedom Unite's Village Quests! Here, we compile a comprehensive
+        guide to assist you in navigating the challenging yet rewarding quests offered in the picturesque Pokke Village.
+        The quest are accessible by talking to the PokkeChief. There are 6 difficulty ranks. To unlock the next rank you
+        must complete the urgent quest. Urgent quests are unlocked by completing all the key quests from the previous
+        rank.
+      </p>
+    </div>
+  </div>
   @for (row of starsArray; track row) {
-    <div class="bg-danger w-50 ms-auto me-auto mb-1">
+    <div class="row bg-danger w-75 ms-auto me-auto mb-1 border pb-3">
       <app-stars-row
         [row]="row"
         [stars]="row.length" />
