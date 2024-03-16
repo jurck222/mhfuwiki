@@ -1,6 +1,5 @@
 package com.example.mhfuwiki.quests;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class QuestController {
 
     @PostMapping("/")
     @ResponseBody()
-    public ResponseEntity<String> addQuest(@RequestBody Quest quest) {
+    public Quest addQuest(@RequestBody Quest quest) {
         return questService.addQuest(quest);
     }
 
@@ -43,8 +42,8 @@ public class QuestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteQuest(@PathVariable long id) {
-        return questService.deleteQuest(id);
+    public void deleteQuest(@PathVariable long id) {
+        questService.deleteQuest(id);
     }
 
 
