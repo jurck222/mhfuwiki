@@ -1,7 +1,6 @@
 package com.example.mhfuwiki.quests;
 
 import com.example.mhfuwiki.shared.Location;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -23,44 +22,44 @@ public class QuestService {
         this.questRepository = questRepository;
     }
 
-    public ResponseEntity<String> addQuest(Quest quest) {
+    public Quest addQuest(Quest quest) {
         try {
             if (quest.getTitle() == null) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Name is a required field.\"}");
+                throw new IllegalStateException("Title is missing");
             }
             if (quest.getDescription() == null) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Description is a required field.\"}");
+                throw new IllegalStateException("Description is missing");
             }
             if (quest.getStar() < minStar || quest.getStar() > maxStar) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Bad entry for quest star.\"}");
+                throw new IllegalStateException("Stars is missing");
             }
             if (!Arrays.asList(questRanks).contains(quest.getRank())) {
                 System.out.println(quest.getRank());
-                return ResponseEntity.badRequest().body("{\"error\": \"Bad entry for quest rank.\"}");
+                throw new IllegalStateException("Rank is missing");
             }
             if (!Arrays.asList(questGiverLocations).contains(quest.getQuestGiverLocation())) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Bad entry for quest giver location.\"}");
+                throw new IllegalStateException("Quest giver location is missing");
             }
             if (!Arrays.asList(Location.MAP_LOCATIONS).contains(quest.getMapLocation())) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Bad entry for quest map location.\"}");
+                throw new IllegalStateException("Map location is missing");
             }
             if (quest.getObjective() == null) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Objective is a required field.\"}");
+                throw new IllegalStateException("Objective is missing");
             }
             if (quest.getReward() == 0) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Reward is a required field.\"}");
+                throw new IllegalStateException("Reward is missing");
             }
             if (quest.getTime() == 0) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Time is a required field.\"}");
+                throw new IllegalStateException("Time is missing");
             }
             if (!Arrays.asList(dayTimes).contains(quest.getTimeOfDay())) {
-                return ResponseEntity.badRequest().body("{\"error\": \"Bad entry for time of day.\"}");
+                throw new IllegalStateException("Time of day is missing");
             }
 
             questRepository.save(quest);
-            return ResponseEntity.ok().body("{\"message\": \"Quest added successfully.\"}");
+            return quest;
         } catch (Exception e) {
-            return ResponseEntity.ok().body("{\"error\":\"There was a problem with your request try again later.\"}");
+            throw new IllegalStateException("There was a problem with your request");
         }
     }
 
@@ -68,14 +67,9 @@ public class QuestService {
         return questRepository.findAll();
     }
 
-    public ResponseEntity<String> deleteQuest(long id) {
-        try {
-            questRepository.findById(id).orElseThrow(() -> new IllegalStateException("Quest with id " + id + " does not exist"));
-            questRepository.deleteById(id);
-            return ResponseEntity.ok().body("{\"message\":\"Quest with id " + id + " successfully deleted\"}");
-        } catch (Exception e) {
-            return ResponseEntity.ok().body("{\"error\":\"Quest with id " + id + " does not exist\"}");
-        }
+    public void deleteQuest(long id) {
+        questRepository.findById(id).orElseThrow(() -> new IllegalStateException("Quest with id " + id + " does not exist"));
+        questRepository.deleteById(id);
     }
 
     public Quest findQuest(Long id) {

@@ -31,7 +31,7 @@ public class Quest {
     private int time;
     private int star;
     private String requirements;
-    private String otherMonsters;
+    private String[] otherMonsters;
     private String timeOfDay;
     private boolean keyQuest;
     private boolean urgentQuest;
@@ -40,7 +40,7 @@ public class Quest {
     }
 
     public Quest(int star, String title, String rank, String questGiverLocation, String mapLocation, String description,
-                 String objective, int reward, int fee, int time, String requirements, String otherMonsters,
+                 String objective, int reward, int fee, int time, String requirements, String[] otherMonsters,
                  String timeOfDay, boolean keyQuest, boolean urgentQuest) {
         this.title = title;
         this.rank = rank;
@@ -61,7 +61,7 @@ public class Quest {
 
     public Quest(Long id, int star, String title, String rank, String questGiverLocation, String mapLocation,
                  String description, String objective, int reward, int fee, int time, String requirements,
-                 String otherMonsters, String timeOfDay, boolean keyQuest, boolean urgentQuest) {
+                 String[] otherMonsters, String timeOfDay, boolean keyQuest, boolean urgentQuest) {
         this.id = id;
         this.title = title;
         this.rank = rank;
@@ -136,7 +136,7 @@ public class Quest {
         this.requirements = requirements;
     }
 
-    public void setOtherMonsters(String otherMonsters) {
+    public void setOtherMonsters(String[] otherMonsters) {
         this.otherMonsters = otherMonsters;
     }
 

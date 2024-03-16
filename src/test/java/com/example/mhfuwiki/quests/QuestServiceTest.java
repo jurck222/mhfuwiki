@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
@@ -25,8 +24,8 @@ public class QuestServiceTest {
 
     @Test
     @DisplayName("Should find quest by id")
-    public void testFindQuest(){
-        Quest testQuest = new Quest(1L,1,"test title","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+    public void testFindQuest() {
+        Quest testQuest = new Quest(1L, 1, "test title", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
         when(questRepository.findById(1L)).thenReturn(Optional.of(testQuest));
         when(questRepository.existsById(1L)).thenReturn(true);
@@ -35,14 +34,15 @@ public class QuestServiceTest {
         assertTrue(result.isPresent());
         assertEquals(testQuest, result.orElse(null));
     }
+
     @Test
     @DisplayName("Should find all quests")
-    public void testFindAllQuests(){
-        Quest testQuest = new Quest(1L,1,"test title","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
-        Quest testQuest2 = new Quest(1L,1,"test title2","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
-        Quest testQuest3 = new Quest(1L,1,"test title3","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+    public void testFindAllQuests() {
+        Quest testQuest = new Quest(1L, 1, "test title", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
+        Quest testQuest2 = new Quest(1L, 1, "test title2", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
+        Quest testQuest3 = new Quest(1L, 1, "test title3", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
-        List<Quest> quests = Arrays.asList(testQuest,testQuest2,testQuest3);
+        List<Quest> quests = Arrays.asList(testQuest, testQuest2, testQuest3);
         when(questRepository.findAll()).thenReturn(quests);
 
         List<Quest> result = questService.getQuests();
@@ -55,11 +55,11 @@ public class QuestServiceTest {
 
     @Test
     @DisplayName("Should find quests by rank and stars")
-    public void testFindByRankAndStar(){
-        Quest testQuest = new Quest(1L,1,"test title","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
-        Quest testQuest2 = new Quest(1L,1,"test title2","LR","village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+    public void testFindByRankAndStar() {
+        Quest testQuest = new Quest(1L, 1, "test title", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
+        Quest testQuest2 = new Quest(1L, 1, "test title2", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
-        List<Quest> quests = Arrays.asList(testQuest,testQuest2);
+        List<Quest> quests = Arrays.asList(testQuest, testQuest2);
 
         when(questRepository.findByRankAndStar("LR", 1)).thenReturn(quests);
 
@@ -72,8 +72,8 @@ public class QuestServiceTest {
 
     @Test
     @DisplayName("Should add quest")
-    public void testAddQuest(){
-        Quest testQuestToAdd = new Quest(1L,1,"test title","LR","Village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+    public void testAddQuest() {
+        Quest testQuestToAdd = new Quest(1L, 1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
         when(questRepository.save(testQuestToAdd)).thenReturn(testQuestToAdd);
 
@@ -84,9 +84,9 @@ public class QuestServiceTest {
 
     @Test
     @DisplayName("Should delete quest")
-    public void testDeleteQuest(){
+    public void testDeleteQuest() {
         Long id = 1L;
-        Quest testQuest = new Quest(1L,1,"test title","LR","Village","Jungle","test desc","blango",200,0,50,"none","none","day", false, false);
+        Quest testQuest = new Quest(1L, 1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
         when(questRepository.findById(id)).thenReturn(Optional.of(testQuest));
         questService.deleteQuest(id);

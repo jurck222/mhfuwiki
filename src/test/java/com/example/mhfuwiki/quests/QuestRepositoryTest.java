@@ -20,7 +20,7 @@ public class QuestRepositoryTest {
     @Test
     @DisplayName("Should save a quest")
     public void testAddQuest() {
-        Quest testQuestToAdd = new Quest(1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", "none", "day", false, false);
+        Quest testQuestToAdd = new Quest(1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
         Quest savedQuest = questRepository.save(testQuestToAdd);
 
@@ -30,7 +30,7 @@ public class QuestRepositoryTest {
     @Test
     @DisplayName("Should find a quest by id")
     public void testFindQuestById() {
-        Quest testQuest = new Quest(1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", "none", "day", false, false);
+        Quest testQuest = new Quest(1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
         Quest savedQuest = questRepository.save(testQuest);
 
         Optional<Quest> foundQuest = questRepository.findById(savedQuest.getId());
@@ -41,7 +41,7 @@ public class QuestRepositoryTest {
 
     @Test
     public void testDeleteById() {
-        Quest testQuestToSave = new Quest(1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", "none", "day", false, false);
+        Quest testQuestToSave = new Quest(1, "test title", "LR", "Village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
         Quest savedQuest = questRepository.save(testQuestToSave);
 
         questRepository.deleteById(savedQuest.getId());
@@ -54,8 +54,8 @@ public class QuestRepositoryTest {
     @Test
     @DisplayName("Should find quests by rank and stars")
     public void testFindByRankAndStars() {
-        Quest testQuest = new Quest(1, "test title", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", "none", "day", false, false);
-        Quest testQuest2 = new Quest(1, "test title2", "HR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", "none", "day", false, false);
+        Quest testQuest = new Quest(1, "test title", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
+        Quest testQuest2 = new Quest(1, "test title2", "HR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
         List<Quest> quests = List.of(testQuest);
 
@@ -71,8 +71,8 @@ public class QuestRepositoryTest {
     @Test
     @DisplayName("Should get all quests")
     public void testGetQuests() {
-        Quest testQuest = new Quest(1, "test title", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", "none", "day", false, false);
-        Quest testQuest2 = new Quest(1, "test title2", "HR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", "none", "day", false, false);
+        Quest testQuest = new Quest(1, "test title", "LR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
+        Quest testQuest2 = new Quest(1, "test title2", "HR", "village", "Jungle", "test desc", "blango", 200, 0, 50, "none", new String[]{}, "day", false, false);
 
 
         Quest savedQuest = questRepository.save(testQuest);
