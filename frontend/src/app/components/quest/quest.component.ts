@@ -1,12 +1,13 @@
-import { DatePipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, inject, input, numberAttribute } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { computedAsync } from 'ngxtension/computed-async';
 import { QuestService } from '../../services/quest.service';
 
 @Component({
   selector: 'app-quest',
   standalone: true,
-  imports: [DatePipe, NgClass],
+  imports: [NgClass, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './quest.component.html',
   styleUrl: './quest.component.css',
 })
