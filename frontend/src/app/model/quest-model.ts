@@ -11,7 +11,7 @@ export interface QuestModel {
   time: number;
   star: number;
   requirements?: string;
-  otherMonsters?: string;
+  otherMonsters?: string[];
   timeOfDay: string;
   keyQuest: boolean;
   urgentQuest: boolean;

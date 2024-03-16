@@ -12,4 +12,9 @@ export const routes: Routes = [
     title: 'Quest information',
     loadComponent: () => import('./components/quest/quest.component').then(m => m.QuestComponent),
   },
+  {
+    path: 'monster/:monster',
+    title: 'Quest information',
+    loadComponent: () => import('./components/monster/monster.component').then(m => m.MonsterComponent),
+  },
 ];

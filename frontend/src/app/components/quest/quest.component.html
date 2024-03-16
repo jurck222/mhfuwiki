@@ -13,51 +13,62 @@
   <div
     class="container ms-auto me-auto w-75 text-dark border"
     style="background-color: rgb(197, 174, 130)">
-    <div class="row">
+    <div class="row pb-1">
       <span>
         <strong>Objective:</strong>
         {{ questInfo()?.objective }}
       </span>
     </div>
-    <div class="row">
+    <div class="row pb-1">
       <span>
         <strong>Description:</strong>
       </span>
     </div>
-    <div class="row">
+    <div class="row pb-1">
       <span>{{ questInfo()?.description }}</span>
     </div>
-    <div class="row">
+    <div class="row pb-1">
       <span>
         <strong>Reward:</strong>
         {{ questInfo()?.reward }}z
       </span>
     </div>
-    <div class="row">
+    <div class="row pb-1">
       <span>
         <strong>Fee:</strong>
         {{ questInfo()?.fee }}z
       </span>
     </div>
-    <div class="row">
+    <div class="row pb-1">
       <span>
         <strong>Location:</strong>
         {{ questInfo()?.mapLocation }} ({{ questInfo()?.timeOfDay }})
       </span>
     </div>
-    <div class="row">
+    <div class="row pb-1">
       <span>
         <strong>Time limit:</strong>
         {{ questInfo()?.time }}min
       </span>
     </div>
-    <div class="row">
+    <div class="row pb-1">
       <span>
         <strong>Monsters:</strong>
-        {{ questInfo()?.otherMonsters }}
+        <ul>
+          @for (monster of questInfo()?.otherMonsters; track $index) {
+            <li>
+              <a
+                [routerLink]="['/monster', monster]"
+                routerLinkActive="active"
+                ariaCurrentWhenActive="page">
+                {{ monster }}
+              </a>
+            </li>
+          }
+        </ul>
       </span>
     </div>
-    <div class="row">
+    <div class="row mb-2">
       <span>
         <strong>Requirements:</strong>
         {{ questInfo()?.requirements }}
